@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const validateToken = require("../middleware/validateTokenJsonHandler");
 const userControlller = require("../controller/userController");
 
 router.post("/signup", userControlller.singUpUser);
 
-router.get("/signin", userControlller.singInUser);
+router.post("/signin", userControlller.singInUser);
 
-router.get("/current", userControlller.currentUser);
+router.get("/current", validateToken,userControlller.currentUser);
+router.get("/alluser", userControlller.getAllUser);
 
 module.exports = router;
