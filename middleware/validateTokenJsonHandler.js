@@ -17,9 +17,14 @@ const validateToken = asyncHandler(async (req, res, next) => {
         res.status(400);
         throw new Error("User is not authorized");
       }
-      console.log(decoded);
+      console.log("The decoded :",decoded);
+      req.user = decoded.user;
       next();
     });
+    if(!token) {
+        res.status(401);
+        throw new Error("User not Authorize or token is not valid");
+    }
   }
 });
 
