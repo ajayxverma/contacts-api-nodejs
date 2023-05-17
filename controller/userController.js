@@ -87,7 +87,7 @@ const currentUser = asynchandler(async (req, res) => {
   //   res.status(200).json(contact);
   // const allUser = await User.find();
   // res.status(200).json(allUser);
-  res.status(200).json("Current user");
+  res.status(200).json(req.user);
 });
 
 const getAllUser = asynchandler(async (req, res) => {
