@@ -12,18 +12,18 @@ const validateToken = asyncHandler(async (req, res, next) => {
     token = autHeader.split(" ")[1];
     console.log(token);
     jwt.verify(token, process.env.UNIQUE_ACCESS_TOKE, (err, decoded) => {
-        console.log("The toke after slicing is :",token);
+      console.log("The toke after slicing is :", token);
       if (err) {
         res.status(400);
         throw new Error("User is not authorized");
       }
-      console.log("The decoded :",decoded);
+      console.log("The decoded :", decoded);
       req.user = decoded.user;
       next();
     });
-    if(!token) {
-        res.status(401);
-        throw new Error("User not Authorize or token is not valid");
+    if (!token) {
+      res.status(401);
+      throw new Error("User not Authorize or token is not valid");
     }
   }
 });

@@ -23,7 +23,7 @@ const getContactById = asynchandler(async (req, res) => {
 //@route PUT /api/contacts
 //@access public
 const addContact = asynchandler(async (req, res) => {
-  console.log("The request body is :", req.body);
+  //console.log("The request body is :", req.body);
   const { name, email, phone } = req.body;
 
   if (!name || !email || !phone) {

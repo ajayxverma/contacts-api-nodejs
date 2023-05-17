@@ -13,4 +13,8 @@ router
   .put(contactcontroller.updateContact)
   .delete(contactcontroller.deleteContact);
 
+router.get("/login", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
+
 module.exports = router;

@@ -20,7 +20,7 @@ const singInUser = asynchandler(async (req, res) => {
   console.log(user.password);
   //compare password with hashpassword
   console.log(await bcrypt.compare(password, user.password));
-  
+
   if (user && (await bcrypt.compare(password, user.password))) {
     const accessToken = jwt.sign(
       {
@@ -69,7 +69,7 @@ const singUpUser = asynchandler(async (req, res) => {
     password: hashpassword,
   });
 
-  if(user) {
+  if (user) {
     res.status(201).json({
       _id: user.id,
       email: user.email,
@@ -98,4 +98,8 @@ const getAllUser = asynchandler(async (req, res) => {
   //res.status(200).json("Current user");
 });
 
-module.exports = { singInUser, singUpUser, currentUser,getAllUser };
+// const authologin = asynchandler(async (req, res) => {
+
+// });
+
+module.exports = { singInUser, singUpUser, currentUser, getAllUser };
